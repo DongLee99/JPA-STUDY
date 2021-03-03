@@ -43,3 +43,35 @@
 2. 연관
 3. 객체 그래프 탐색
 
+# Hello.jpa
+
+## 데이터 베이스의 방언
+
+- 데이터 베이스의 방언이란 -> 각 데이터 베이스 만의 고유 언어? 의 개념과 비슷하다 
+```ex) Mysql, Oracle 등의 VARCHAR / VARCHAR2 이런식의 차이```
+- ```JPA``` => 데이터 베이스의 방언을 극복하게 해줌 이로써 데이터 베이스 환경을 옮길시 개발자의 수고가 줄어들게된다.
+( jpa 가 특정 DB에 종속되지 않는다는게 이에 해당하게된다.)
+
+---
+
+## JPA 의 구동 방식
+* ```JPA 구동 방식``` 
+![](https://images.velog.io/images/donglee99/post/15b47daf-a129-49d2-877b-79d1c22de121/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202021-03-03%20%EC%98%A4%ED%9B%84%2012.21.31.png)
+*  persistence.xml 의 설정 파일을 조회 하고 persistence 클래스와 Entity ManagerFactory 클래스를 생성후 필요할때마다 Entity Manager 를 생성해 사용한다.
+    💁 Entity Manager Factory
+    * 하나만 생성
+    * 애플리케이션 전체에서 공유
+    * Entity Manager 는 쓰레드간 공유 X (사용후 버려라)
+    * JPA 의 모든 데이터 변경은 한 트랜잭션 안에서만 실행 (간혹 종종 간단한 변경은 트랜잭션 밖에서도 가능한데 이는 DB가 알아서 처리하는 것임)
+  * JPA 사용시 Find 후 수정한 객체를 따로 UPDATE 하지 않아도 Commit시 알아서 UPDATE 된다는 편리함이 있다.
+  
+ ---
+  
+## JPQL
+* ```JPA는 SQL 을 추상화만 하고 JPQL 이라는 객체 지향 쿼리를 제공한다```
+
+---
+## JPA에서 가장 중요한것
+1. 객체와 관계형 DB의 매핑
+2. 영속성 컨텍스트 ( 실제 DB가 내부에서 어떻게 동작하냐)
+  
