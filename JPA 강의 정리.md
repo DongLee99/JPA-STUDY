@@ -121,3 +121,67 @@
     3. schema
     4. uniqueConst
    		
+---
+   
+   ## 데이터 베이스 스키마 자동생성
+   
+   * ```hibernate.ddl.auto```의 속성
+   value
+   	
+    1. create
+    * Table drop 후 생성
+    2. create-drop
+    * Table 생성후 종료시 drop
+    3. update
+    * 기존에 Table에 추가
+    4. validated
+    * validate (엔티티나 테이블이 항상 매핑이 되어있는지 확인)
+    5. none 
+    * 아무것도 X
+ * 운영중인 장치에 절대 사용하면 X
+ 
+---
+
+## 어노테이션 정리
+
+* ```Column``` 컬럼 매핑
+* ```Temporal``` 날짜 타입 매핑
+* ```Enumerate``` enum 타입 매핑
+* ```Lo``` Blob, Clob 매핑
+* ```Transien``` 특정 필드를 컬럼에 매핑X -> DB에 매핑 X
+
+** Column ** 
+* 속성
+	
+    * ```name``` 필드와 매핑할 테이블의 이름 지정
+    * ```insertable```, ```updatable``` 등록, 변경 가능 여부
+    * ```nullable``` null 값의 허용 여부 결정
+    * ```unique``` @Table의 UniqueConstraints와 같지만 한 컬럼에 간단하게 Unique 제약을 걸때 사용한다
+    * ```ColumnDefinition``` 데이터 베이스의 컬럼 정보를 정확히 줄 수 있다.
+    * ```length``` 문자 길이
+    * ```precision.scale```
+    
+** Enumerated **
+* 속성
+	
+    * ```EnumType.ORDINARY``` enum의 순서를 DB에 저장
+    * ```EnumType.STRING``` enum의 이름을 DB에 저장
+    💁 ORDINARY 는 사용하면 안된다. enum의 순서를 기록해 나중에 데이터의 오류가 생길수 있다.
+    
+---
+## 기본키 매핑
+* 사용 어노테이션 ```@ID```, ```@GeneratedValue```
+	
+    * 직접 할당 ```@ID``` 만 사용
+    * 자동 할당 ```GeneratedValue```
+    	* GeneratedValue 
+        INDENTITY
+        SEQUENCE
+        * Table 전략
+        
+* 권장하는 식별자 전략
+	
+    * 기본키 제약 조건: Null이면 X, 유일, 변하면 안됨
+    🖍 권장 Long + 대체키 + 키 생성 전략
+    
+☝️ 영속성 컨텍스트에는 PK값이 무조건 필요하다 근데 IDENTITY 는 DB에 들어가야만 null 값이 들어가야PK값이 지정된다 -> 이때만 persist시 바로 쿼리문 작동
