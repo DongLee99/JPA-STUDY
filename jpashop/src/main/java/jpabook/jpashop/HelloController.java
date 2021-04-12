@@ -20,7 +20,7 @@ public class HelloController {
     /*@GetMapping("/test")
     public Member test() {
         Member member = new Member();
-        member.setUsername("kim");
+        member.setname("kim");
         return member;
     }*/
 

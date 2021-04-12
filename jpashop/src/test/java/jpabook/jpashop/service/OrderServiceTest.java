@@ -40,7 +40,7 @@ public class OrderServiceTest {
     public void 상품주문() throws Exception {
         Member member = new Member();
         Item book = new Book();
-        member.setUsername("회원1");
+        member.setname("회원1");
         member.setAddress(new Address("서울", "강가", "123-123"));
         em.persist(member);
 
@@ -65,7 +65,7 @@ public class OrderServiceTest {
     public void 상품주문_재고수량초과() throws Exception {
         Member member = new Member();
         Item book = new Book();
-        member.setUsername("회원1");
+        member.setname("회원1");
         member.setAddress(new Address("서울", "강가", "123-123"));
         em.persist(member);
 
@@ -79,7 +79,7 @@ public class OrderServiceTest {
     public void 주문취소() throws Exception {
         Member member = new Member();
         Book item = new Book();
-        member.setUsername("회원1");
+        member.setname("회원1");
         member.setAddress(new Address("서울", "강가", "123-123"));
         em.persist(member);
         item.setName("시골 Jpa");
