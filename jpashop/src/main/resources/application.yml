@@ -10,8 +10,9 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-        show_sql: true # system out 에서 출력됨
+        # show_sql: true # system out 에서 출력됨
         format_sql: true
+        default_batch_fetch_size: 100
 
 logging.level:
   level:
