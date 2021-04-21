@@ -2,11 +2,9 @@ package jpabook.jpashop.api;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.service.MemberService;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,8 +31,7 @@ public class MemberApiController {
                 .map(m -> new MemberDto(m.getName()))
                 .collect(Collectors.toList());
 
-        return new Result(collect.size(),collect);
-
+        return new Result(collect.size(), collect);
     }
 
     @Data
@@ -49,6 +46,7 @@ public class MemberApiController {
     static class MemberDto {
         private String name;
     }
+
     @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid Member member) { // RequestBody = json 데이타를 Member로 바꿔줌
         Long id = memberService.join(member);
@@ -63,7 +61,7 @@ public class MemberApiController {
 
         Long id = memberService.join(member);
         return new CreateMemberResponse(id);
-    // 실무에서 엔티티를 반환 X 엔티티 자체를 파라미터로 받기 X (ex : Member 를 그대로 사용하지 말고 Dto 를 사용하자)
+        // 실무에서 엔티티를 반환 X 엔티티 자체를 파라미터로 받기 X (ex : Member 를 그대로 사용하지 말고 Dto 를 사용하자)
     }
 
     @PutMapping("/api/v2/members/{id}")
