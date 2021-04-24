@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 //@Controller @ResponseBody == RestController Date를 바로 json으로 보내자
 @RestController
 @RequiredArgsConstructor
-
 public class MemberApiController {
 
     private final MemberService memberService;
