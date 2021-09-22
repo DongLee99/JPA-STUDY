@@ -1,5 +1,6 @@
 package com.springbootwithaws.demo.domain.posts;
 
+import com.springbootwithaws.demo.controller.posts.dto.PostsUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -29,5 +30,10 @@ public class Posts {
     }
 
     protected Posts() {
+    }
+
+    public void update(PostsUpdateRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
     }
 }
