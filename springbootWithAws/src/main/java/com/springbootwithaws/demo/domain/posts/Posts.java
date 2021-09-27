@@ -3,11 +3,13 @@ package com.springbootwithaws.demo.domain.posts;
 import com.springbootwithaws.demo.controller.posts.dto.PostsUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@NoArgsConstructor
 public class Posts extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +29,6 @@ public class Posts extends BaseTimeEntity{
         this.title = title;
         this.content = content;
         this.author = author;
-    }
-
-    protected Posts() {
     }
 
     public void update(PostsUpdateRequestDto requestDto) {

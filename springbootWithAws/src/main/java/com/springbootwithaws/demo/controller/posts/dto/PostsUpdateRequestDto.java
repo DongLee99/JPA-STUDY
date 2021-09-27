@@ -4,17 +4,17 @@ package com.springbootwithaws.demo.controller.posts.dto;
 import com.springbootwithaws.demo.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class PostsUpdateRequestDto {
-    private final String title;
-    private final String content;
-    private final String author;
+    private String title;
+    private String content;
 
     @Builder
-    public PostsUpdateRequestDto(String title, String content, String author) {
+    public PostsUpdateRequestDto(String title, String content) {
         this.title = title;
         this.content = content;
-        this.author = author;
     }
 }

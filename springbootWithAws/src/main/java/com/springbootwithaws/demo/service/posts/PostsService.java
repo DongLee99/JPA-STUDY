@@ -31,7 +31,7 @@ public class PostsService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
 
         posts.update(requestDto);
-        return posts.getId();
+        return id;
     }
 
     @Transactional
@@ -47,5 +47,12 @@ public class PostsService {
         return postsRepository.findAllDesc().stream()
                 .map(post -> new PostsListResponseDto(post))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Posts posts  = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없음"));
+        postsRepository.delete(posts);
     }
 }

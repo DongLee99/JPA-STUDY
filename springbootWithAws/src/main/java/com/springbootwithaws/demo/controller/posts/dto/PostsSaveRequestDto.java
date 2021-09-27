@@ -2,11 +2,15 @@ package com.springbootwithaws.demo.controller.posts.dto;
 
 import com.springbootwithaws.demo.domain.posts.Posts;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 public class PostsSaveRequestDto {
-    private final String title;
-    private final String content;
-    private final String author;
+    private String title;
+    private String content;
+    private String author;
 
     @Builder
     public PostsSaveRequestDto(String title, String content, String author) {
