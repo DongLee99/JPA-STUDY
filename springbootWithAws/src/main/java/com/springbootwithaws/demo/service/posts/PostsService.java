@@ -1,5 +1,6 @@
 package com.springbootwithaws.demo.service.posts;
 
+import com.springbootwithaws.demo.controller.posts.dto.PostsListResponseDto;
 import com.springbootwithaws.demo.controller.posts.dto.PostsResponseDto;
 import com.springbootwithaws.demo.controller.posts.dto.PostsSaveRequestDto;
 import com.springbootwithaws.demo.controller.posts.dto.PostsUpdateRequestDto;
@@ -9,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -37,5 +40,12 @@ public class PostsService {
                 .orElseThrow(() ->
                         new IllegalArgumentException("해당 게시글이 없음"));
         return new PostsResponseDto(posts);
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> findByAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(post -> new PostsListResponseDto(post))
+                .collect(Collectors.toList());
     }
 }

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 //@RequestMapping("/api/v1/posts")
@@ -25,8 +27,13 @@ public class PostsApiController {
         return postsService.update(id ,requestDto);
     }
 
-    @GetMapping("/api/v1/posts/find/{id}")
+    @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
+    }
+
+    @GetMapping("/api/v1/posts/find/dec")
+    public List<PostsResponseDto> findByIdDesc(@PathVariable Long id) {
+        return null;
     }
 }
