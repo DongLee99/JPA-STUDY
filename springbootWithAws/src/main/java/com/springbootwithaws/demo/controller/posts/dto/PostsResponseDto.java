@@ -1,7 +1,9 @@
 package com.springbootwithaws.demo.controller.posts.dto;
 
 import com.springbootwithaws.demo.domain.posts.Posts;
+import lombok.Getter;
 
+@Getter
 public class PostsResponseDto {
     private String title;
     private String content;
